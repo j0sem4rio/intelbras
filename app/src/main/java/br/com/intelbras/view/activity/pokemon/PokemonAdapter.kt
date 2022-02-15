@@ -13,9 +13,9 @@ import br.com.intelbras.model.Pokemon
 import com.squareup.picasso.Picasso
 
 
-class PokemonAdapter(val callback: PokemonClick) : RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
+class PokemonAdapter(private val callback: PokemonClick) : RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
 
-    var pokemonList: MutableList<Pokemon>
+    private val pokemonList: MutableList<Pokemon>
 
     init {
         pokemonList = ArrayList()
@@ -40,9 +40,10 @@ class PokemonAdapter(val callback: PokemonClick) : RecyclerView.Adapter<PokemonA
 
             val logo = str.substringAfter("https://pokeapi.co/api/v2/pokemon/").substringBefore('/')
 
-            Picasso.get().load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/"+logo+".png")
+
+            Picasso.get().load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$logo.png")
                 .placeholder(R.drawable.ic_a4a72105d37447734c2b1f36c1049d07)
-                .into( binding.gasFlag);
+                .into( binding.gasFlag)
             binding.setVariable(BR.pokemon, data)
             binding.executePendingBindings()
         }
@@ -57,7 +58,7 @@ class PokemonAdapter(val callback: PokemonClick) : RecyclerView.Adapter<PokemonA
     }
 
     override fun onBindViewHolder(holder: ViewHolder, pos: Int) {
-        holder.bind(pokemonList.get(pos))
+        holder.bind(pokemonList[pos])
         holder.binding.also {
             it.pokemon = pokemonList[pos]
             it.pokemonCallback = callback
