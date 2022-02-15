@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-
 import androidx.recyclerview.widget.RecyclerView
 import br.com.intelbras.BR
 import br.com.intelbras.R
 import br.com.intelbras.databinding.ItemPokemonBinding
 import br.com.intelbras.model.Pokemon
+import com.squareup.picasso.Picasso
 
 
 class PokemonAdapter(val callback: PokemonClick) : RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
@@ -36,6 +36,13 @@ class PokemonAdapter(val callback: PokemonClick) : RecyclerView.Adapter<PokemonA
 
     class ViewHolder(val binding: ItemPokemonBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Any) {
+            val str =  (data as Pokemon).url!!
+
+            val logo = str.substringAfter("https://pokeapi.co/api/v2/pokemon/").substringBefore('/')
+
+            Picasso.get().load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/"+logo+".png")
+                .placeholder(R.drawable.ic_a4a72105d37447734c2b1f36c1049d07)
+                .into( binding.gasFlag);
             binding.setVariable(BR.pokemon, data)
             binding.executePendingBindings()
         }

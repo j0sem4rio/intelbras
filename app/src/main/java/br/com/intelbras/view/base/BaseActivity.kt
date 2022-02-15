@@ -35,9 +35,10 @@ open class BaseActivity : AppCompatActivity(){
         if (hud != null && hud!!.isShowing) hud!!.dismiss()
     }
 
-    fun alert(msg: String?) {
+    fun alert(title: String?, msg: String?) {
         val builder = AlertDialog.Builder(this)
         builder.setPositiveButton(getString(android.R.string.ok)) { dialog, id -> }
+        builder.setTitle(title)
         builder.setMessage(msg)
         val dialog = builder.create()
         dialog.show()

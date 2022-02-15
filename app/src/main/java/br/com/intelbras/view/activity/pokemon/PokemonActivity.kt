@@ -105,7 +105,7 @@ class PokemonActivity : BaseActivity() {
     }
 
     private val onMessageErrorObserver = Observer<Any> {
-//        alert(getString(R.string.dialog_title_attention), getString(R.string.try_again_later))
+        alert(getString(R.string.title_attention), getString(R.string.try_again_later))
     }
 
     private val emptyListObserver = Observer<Boolean> {
