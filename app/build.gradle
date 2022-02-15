@@ -49,6 +49,11 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
+    kapt 'com.github.Raizlabs.DBFlow:dbflow-processor:4.2.4'
+    implementation 'com.github.Raizlabs.DBFlow:dbflow-core:4.2.4'
+    implementation 'com.github.Raizlabs.DBFlow:dbflow:4.2.4'
+    implementation 'com.github.Raizlabs.DBFlow:dbflow-kotlinextensions:4.2.4'
+
     implementation 'com.kaopiz:kprogresshud:1.2.0'
 
     testImplementation 'junit:junit:4.+'

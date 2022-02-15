@@ -32,25 +32,21 @@ class PokemonActivity : BaseActivity() {
         setContentView(R.layout.activity_pokemon)
         initUI()
 
-//        if (NetworkUtil(applicationContext).isNetworkAvailable) {
-            openLoading()
+        openLoading()
 
-            fuelViewModel.mutableLiveData?.observe(this, object: Observer<List<Pokemon>> {
+        fuelViewModel.mutableLiveData?.observe(this, object: Observer<List<Pokemon>> {
 
-                override fun onChanged(t: List<Pokemon>?) {
-                    closeLoading()
-                    isLoading = false
-                    isLastPage = t!!.isEmpty()
-                    pokemonAdapter.addData(t)
-                    pokemonAdapter.notifyDataSetChanged()
-                }
-            })
+            override fun onChanged(t: List<Pokemon>?) {
+                closeLoading()
+                isLoading = false
+                isLastPage = t!!.isEmpty()
+                pokemonAdapter.addData(t)
+                pokemonAdapter.notifyDataSetChanged()
+            }
+        })
 
-            fuelViewModel.getPokemons(applicationContext)
+        fuelViewModel.getPokemons(applicationContext)
 
-//        }else{
-//            Toast.makeText(this, "No Network Available", Toast.LENGTH_LONG).show()
-//        }
     }
 
     fun initUI(){

@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Stetho.initializeWithDefaults(this)
+
         startActivity(Intent(this@MainActivity, PokemonActivity::class.java))
         finish()
     }
