@@ -6,4 +6,6 @@
     <string name="empty_list">empty!</string>
     <string name="title_attention">Attention!</string>
     <string name="try_again_later">Try again later</string>
+    <string name="height">Height %s</string>
+    <string name="weight">Weight %s</string>
 </resources>

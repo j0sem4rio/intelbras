@@ -1,6 +1,7 @@
 package br.com.intelbras.api
 
 import br.com.intelbras.model.Pokemon
+import br.com.intelbras.model.PokemonItem
 import retrofit2.Call
 import retrofit2.Callback
 
@@ -13,12 +14,12 @@ object PokemonAPI {
 
         beerContentCall.enqueue(callback)
     }
-//
-//    fun getBeerDetails(callback: Callback<Beer?>, id: Long?) {
-//        val growlerAPI = GrowlerApiServer.apiServer
-//        val beerContentCall: Call<Beer?>?
-//        beerContentCall = growlerAPI!!.getBeersDetails(id)
-//        beerContentCall.enqueue(callback)
-//    }
+
+    fun getPokemonDetails(callback: Callback<PokemonItem?>, id: Int?) {
+        val growlerAPI = IntelbrasApiServer.apiServer
+        val beerContentCall: Call<PokemonItem?>?
+        beerContentCall = growlerAPI!!.getDetailsPokemon(id)
+        beerContentCall.enqueue(callback)
+    }
 
 }

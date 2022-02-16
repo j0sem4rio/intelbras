@@ -1,5 +1,6 @@
 package br.com.intelbras.view.activity.pokemon
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.intelbras.R
+import br.com.intelbras.view.activity.detail.PokemonDetailsActivity
 import br.com.intelbras.view.base.BaseActivity
 import br.com.intelbras.view.base.PaginationScrollListener
 import kotlinx.android.synthetic.main.activity_pokemon.*
@@ -58,6 +60,10 @@ class PokemonActivity : BaseActivity() {
         pokemonAdapter = PokemonAdapter(PokemonClick {
 
             Log.v(TAG, " $it.name")
+
+            val intent = Intent(this, PokemonDetailsActivity::class.java)
+            intent.putExtra("URL",it.idPokemon())
+            startActivity(intent)
 
         })
 

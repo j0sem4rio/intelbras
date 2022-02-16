@@ -36,12 +36,9 @@ class PokemonAdapter(private val callback: PokemonClick) : RecyclerView.Adapter<
 
     class ViewHolder(val binding: ItemPokemonBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Any) {
-            val str =  (data as Pokemon).url!!
+            val str =  (data as Pokemon).idPokemon()
 
-            val logo = str.substringAfter("https://pokeapi.co/api/v2/pokemon/").substringBefore('/')
-
-
-            Picasso.get().load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$logo.png")
+            Picasso.get().load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$str.png")
                 .placeholder(R.drawable.ic_a4a72105d37447734c2b1f36c1049d07)
                 .into( binding.gasFlag)
             binding.setVariable(BR.pokemon, data)

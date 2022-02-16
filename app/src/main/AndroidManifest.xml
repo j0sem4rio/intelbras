@@ -26,6 +26,11 @@
             android:label="@string/app_name"
             android:configChanges="orientation|screenSize|keyboardHidden"
             />
+        <activity
+            android:name=".view.activity.detail.PokemonDetailsActivity"
+            android:label="@string/app_name"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            />
     </application>
 
 </manifest>

@@ -20,4 +20,8 @@ class Pokemon : BaseModel() {
     @Expose
     @Column(name = "url")
     var url: String? = null
+
+    fun idPokemon(): String{
+        return  url!!.substringAfter("https://pokeapi.co/api/v2/pokemon/").substringBefore('/')
+    }
 }
