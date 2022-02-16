@@ -11,6 +11,9 @@ class PokemonItem {
     var sprites: Sprites? = null
 
     @Expose
+    var abilities: List<Abilities>? = null
+
+    @Expose
     var height: Int? = null
 
     @Expose

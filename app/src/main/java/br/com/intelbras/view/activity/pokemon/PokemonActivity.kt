@@ -23,7 +23,7 @@ class PokemonActivity : BaseActivity() {
     private lateinit var pokemonAdapter: PokemonAdapter
     var isLastPage: Boolean = false
     var isLoading: Boolean = false
-    private val fuelViewModel = PokemonViewModel()
+    private val pokemonViewModel = PokemonViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +33,7 @@ class PokemonActivity : BaseActivity() {
 
         openLoading()
 
-        fuelViewModel.mutableLiveData?.observe(this,
+        pokemonViewModel.mutableLiveData?.observe(this,
             { t ->
                 closeLoading()
                 isLoading = false
@@ -42,13 +42,13 @@ class PokemonActivity : BaseActivity() {
                 pokemonAdapter.notifyDataSetChanged()
             })
 
-        fuelViewModel.getPokemons(applicationContext)
+        pokemonViewModel.getPokemons(applicationContext)
 
     }
 
     private fun initUI(){
 
-        fuelViewModel.onMessageError?.observe(this, onMessageErrorObserver)
+        pokemonViewModel.onMessageError?.observe(this, onMessageErrorObserver)
         rvPokemonList.setHasFixedSize(true)
         val layoutManager = LinearLayoutManager(this)
         rvPokemonList.layoutManager = layoutManager
@@ -91,7 +91,7 @@ class PokemonActivity : BaseActivity() {
     fun getMoreItems() {
         openLoading()
 
-        fuelViewModel.getPokemons(applicationContext)
+        pokemonViewModel.getPokemons(applicationContext)
 
     }
 
